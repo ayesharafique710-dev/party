@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paper Khatam Ki Party 🎉</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700;800&display=swap');
+
+:root {
+  --pink: #ff4fa3;
+  --purple: #9b5cff;
+  --gold: #ffd166;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  background: linear-gradient(135deg, #180d38, #551b78, #b52e82);
+  text-align: center;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 20%, #ff4fa344, transparent 25%),
+    radial-gradient(circle at 85% 75%, #8c65ff55, transparent 30%);
+  z-index: -1;
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .8;
+  background-image:
+    radial-gradient(white 1px, transparent 1.5px),
+    radial-gradient(#ffd166 1px, transparent 1.5px);
+  background-size: 65px 65px, 93px 93px;
+  background-position: 0 0, 30px 40px;
+  animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .35; }
+  to { opacity: .9; }
+}
+
+header {
+  padding: 28px 15px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.tag {
+  display: inline-block;
+  padding: 9px 18px;
+  border: 1px solid #ffffff55;
+  border-radius: 30px;
+  background: #ffffff15;
+  backdrop-filter: blur(8px);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+main {
+  position: relative;
+  z-index: 2;
+  width: min(900px, 94%);
+  margin: 35px auto 0;
+  padding: 35px 20px 55px;
+  border: 1px solid #ffffff32;
+  border-radius: 30px;
+  background: #ffffff0c;
+  backdrop-filter: blur(9px);
+  box-shadow: 0 20px 70px #00000025;
+}
+
+.crown {
+  font-size: 55px;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  50% { transform: translateY(-12px) rotate(5deg); }
+}
+
+h1 {
+  margin: 12px 0;
+  font-size: clamp(42px, 8vw, 85px);
+  line-height: 1.15;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #fff, #ffd166, #ff7bc5, #fff);
+  background-size: 250%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 4s linear infinite;
+  filter: drop-shadow(0 0 18px #ff65bd55);
+}
+
+@keyframes shine {
+  to { background-position: 250%; }
+}
+
+.subtitle {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(23px, 4vw, 38px);
+  color: #ffd166;
+  margin: 18px 0;
+}
+
+.message {
+  max-width: 620px;
+  margin: 18px auto;
+  color: #f8eaff;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.counter {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 30px auto;
+}
+
+.counter div {
+  min-width: 115px;
+  padding: 16px 20px;
+  border: 1px solid #ffffff35;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #ffffff20, #ffffff08);
+}
+
+.counter strong {
+  display: block;
+  font-size: 23px;
+}
+
+.counter span {
+  font-size: 12px;
+  color: #f8dfff;
+}
+
+button {
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  padding: 15px 25px;
+  margin: 8px;
+  transition: transform .2s, box-shadow .2s;
+}
+
+button:hover {
+  transform: translateY(-4px) scale(1.04);
+}
+
+.primary {
+  color: #54205f;
+  background: linear-gradient(90deg, #ffd166, #ff91d0);
+  box-shadow: 0 0 30px #ff7bc566;
+}
+
+.secondary {
+  color: white;
+  background: #ffffff18;
+  border: 1px solid #ffffff60;
+}
+
+.party-status {
+  min-height: 30px;
+  color: #ffd166;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+footer {
+  padding: 25px 15px 35px;
+  color: #f8dfff;
+  font-size: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.balloon {
+  position: fixed;
+  bottom: -180px;
+  width: 55px;
+  height: 70px;
+  border-radius: 50% 50% 45% 45%;
+  opacity: .85;
+  z-index: 1;
+  animation: floatUp linear infinite;
+  box-shadow: inset -9px -7px 0 #00000012;
+}
+
+.balloon::before {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 23px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 8px solid currentColor;
+}
+
+.balloon::after {
+  content: "";
+  position: absolute;
+  height: 65px;
+  width: 1px;
+  background: #ffffff85;
+  top: 75px;
+  left: 27px;
+}
+
+@keyframes floatUp {
+  to { transform: translateY(-125vh) rotate(14deg); }
+}
+
+.confetti {
+  position: fixed;
+  top: -20px;
+  z-index: 10;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translate(var(--drift), 110vh) rotate(900deg);
+    opacity: .2;
+  }
+}
+
+#fireworks {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+  pointer-events: none;
+}
+
+#surprise {
+  display: none;
+  margin: 25px auto 0;
+  max-width: 550px;
+  padding: 25px;
+  border-radius: 20px;
+  background: #ffffff15;
+  border: 1px solid #ffd16670;
+  animation: appear .7s ease;
+}
+
+#surprise h2 {
+  font-family: 'Pacifico', cursive;
+  color: #ffd166;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: scale(.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 500px) {
+  main { padding: 28px 13px 38px; margin-top: 25px; }
+  .counter div { min-width: 95px; padding: 13px; }
+  .message { font-size: 14px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+<canvas id="fireworks"></canvas>
+
+<header>
+  <div class="tag">✨ THE WAIT IS FINALLY OVER ✨</div>
+</header>
+
+<main>
+  <div class="crown">👑</div>
+
+  <h1>PAPER<br>KHATAM!</h1>
+
+  <div class="subtitle">Paper Khatam Hony Ki Party 🎉</div>
+
+  <p class="message">
+    No more books, no more stress, no more exam tension! 😭💃
+    <br>
+    We survived the papers. Now it's time to celebrate!
+    <br>
+    <strong>Parhai ko tata, party ko salaam! 😂🥳</strong>
+  </p>
+
+  <div class="counter">
+    <div>
+      <strong>0 📚</strong>
+      <span>More papers (for now!)</span>
+    </div>
+    <div>
+      <strong>100% 🎉</strong>
+      <span>Celebration mode</span>
+    </div>
+    <div>
+      <strong>∞ 💖</strong>
+      <span>Happiness level</span>
+    </div>
+  </div>
+
+  <button class="primary" id="celebrate">
+    🎊 LET'S CELEBRATE!
+  </button>
+
+  <button class="secondary" id="music">
+    🎵 Play Party Tune
+  </button>
+
+  <div class="party-status" id="status">
+    Tap the button and let the party begin! ✨
+  </div>
+
+  <div id="surprise">
+    <h2>WE DID IT! 🥹💖</h2>
+    <p>
+      Dear stress, our relationship is officially OVER. 💅
+      <br><br>
+      Dear sleep, we are getting back together. 😴❤️
+      <br><br>
+      Dear friends, GET READY FOR THE PARTY! 🥳
+    </p>
+    <div style="font-size:35px">🎓🎈🎉💃🏻🪩🥂</div>
+    <p><strong>Paper khatam — zindagi shuru! ✨</strong></p>
+  </div>
+</main>
+
+<footer>
+  MADE WITH 💖 FOR ALL THE EXAM SURVIVORS
+  <br><br>
+  © The Official Paper Khatam Celebration 🎓
+</footer>
+
+<script>
+const colors = [
+  '#ff4fa3', '#ffd166', '#9b5cff',
+  '#55e6c1', '#ff795e', '#ffffff'
+];
+
+// Floating balloons
+for (let i = 0; i < 15; i++) {
+  const balloon = document.createElement('div');
+  balloon.className = 'balloon';
+
+  const color = colors[i % colors.length];
+  balloon.style.background = color;
+  balloon.style.color = color;
+  balloon.style.left = Math.random() * 100 + 'vw';
+  balloon.style.animationDuration = (9 + Math.random() * 12) + 's';
+  balloon.style.animationDelay = (-Math.random() * 20) + 's';
+  balloon.style.transform = `scale(${0.6 + Math.random() * 0.6})`;
+
+  document.body.appendChild(balloon);
+}
+
+// Confetti party
+function confettiBurst(amount = 160) {
+  for (let i = 0; i < amount; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti';
+
+    piece.style.left = Math.random() * 100 + 'vw';
+    piece.style.background = colors[
+      Math.floor(Math.random() * colors.length)
+    ];
+    piece.style.width = (5 + Math.random() * 8) + 'px';
+    piece.style.height = (8 + Math.random() * 12) + 'px';
+    piece.style.borderRadius = Math.random() > .5 ? '50%' : '2px';
+    piece.style.setProperty('--drift', (Math.random() * 240 - 120) + 'px');
+    piece.style.animationDuration = (2.5 + Math.random() * 3) + 's';
+
+    document.body.appendChild(piece);
+    piece.addEventListener('animationend', () => piece.remove());
+  }
+}
+
+// Fireworks
+const canvas = document.getElementById('fireworks');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let animationRunning = false;
+
+function resizeCanvas() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = innerWidth * dpr;
+  canvas.height = innerHeight * dpr;
+  canvas.style.width = innerWidth + 'px';
+  canvas.style.height = innerHeight + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+function firework(x, y) {
+  for (let i = 0; i < 65; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = 1.5 + Math.random() * 5;
+
+    particles.push({
+      x, y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      life: 55 + Math.random() * 35,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      size: 2 + Math.random() * 2
+    });
+  }
+
+  if (!animationRunning) animateFireworks();
+}
+
+function animateFireworks() {
+  animationRunning = true;
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+  particles = particles.filter(p => p.life > 0);
+
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += 0.035;
+    p.vx *= 0.99;
+    p.life--;
+
+    ctx.globalAlpha = Math.min(1, p.life / 25);
+    ctx.fillStyle = p.color;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  ctx.globalAlpha = 1;
+
+  if (particles.length) {
+    requestAnimationFrame(animateFireworks);
+  } else {
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    animationRunning = false;
+  }
+}
+
+function launchFireworks() {
+  for (let i = 0; i < 7; i++) {
+    setTimeout(() => {
+      firework(
+        innerWidth * (0.12 + Math.random() * 0.76),
+        innerHeight * (0.12 + Math.random() * 0.48)
+      );
+    }, i * 250);
+  }
+}
+
+// Original synthesized party tune
+let audioContext = null;
+let musicTimer = null;
+let musicOn = false;
+let noteIndex = 0;
+
+const melody = [
+  [523.25, 0.18], [659.25, 0.18],
+  [783.99, 0.18], [1046.5, 0.35],
+  [783.99, 0.18], [880, 0.18],
+  [1046.5, 0.35], [880, 0.18],
+  [783.99, 0.18], [659.25, 0.35],
+  [587.33, 0.18], [698.46, 0.18],
+  [880, 0.4]
+];
+
+function playNote(freq, duration) {
+  if (!audioContext) return;
+
+  const osc = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+
+  osc.type = 'triangle';
+  osc.frequency.value = freq;
+  gain.gain.setValueAtTime(0.0001, audioContext.currentTime);
+  gain.gain.exponentialRampToValueAtTime(
+    0.09, audioContext.currentTime + 0.025
+  );
+  gain.gain.exponentialRampToValueAtTime(
+    0.0001, audioContext.currentTime + duration
+  );
+
+  osc.connect(gain);
+  gain.connect(audioContext.destination);
+
+  osc.start();
+  osc.stop(audioContext.currentTime + duration + 0.02);
+}
+
+function stopMusic() {
+  musicOn = false;
+  clearInterval(musicTimer);
+  musicTimer = null;
+  document.getElementById('music').textContent = '🎵 Play Party Tune';
+}
+
+async function toggleMusic() {
+  if (musicOn) {
+    stopMusic();
+    return;
+  }
+
+  const AudioCtx = window.AudioContext || window.webkitAudioContext;
+
+  if (!AudioCtx) {
+    document.getElementById('status').textContent =
+      'Audio is not supported in this browser.';
+    return;
+  }
+
+  if (!audioContext) audioContext = new AudioCtx();
+
+  await audioContext.resume();
+  musicOn = true;
+  noteIndex = 0;
+
+  document.getElementById('music').textContent = '🔇 Stop Party Tune';
+
+  function nextNote() {
+    if (!musicOn) return;
+
+    const [freq, duration] = melody[noteIndex % melody.length];
+    playNote(freq, duration);
+    noteIndex++;
+  }
+
+  nextNote();
+  musicTimer = setInterval(nextNote, 230);
+}
+
+document.getElementById('music').addEventListener('click', toggleMusic);
+
+document.getElementById('celebrate').addEventListener('click', () => {
+  document.getElementById('surprise').style.display = 'block';
+  document.getElementById('status').textContent =
+    'PARTY MODE ACTIVATED! YOU DESERVE THIS! 🥳';
+
+  confettiBurst(220);
+  launchFireworks();
+
+  setTimeout(() => confettiBurst(120), 1000);
+  setTimeout(() => confettiBurst(120), 2300);
+  setTimeout(launchFireworks, 1400);
+  setTimeout(launchFireworks, 3000);
+});
+
+// A little celebration as soon as the page opens
+window.addEventListener('load', () => {
+  setTimeout(() => confettiBurst(75), 500);
+});
+</script>
+
+</body>
+</html>
